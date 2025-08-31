@@ -1,7 +1,12 @@
+import logo from "./assets/logo.png";
+import ICHeader from "./components/ICHeader";
+
 function App() {
   return (
-    <h1>React Investment Calculator</h1>
-  )
+    <>
+      <ICHeader />
+    </>
+  );
 }
 
-export default App
+export default App;
