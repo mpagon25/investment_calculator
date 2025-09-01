@@ -1,41 +1,39 @@
 import ICInputField from "./ICInputField";
+import {
+  INITIAL_INVESTMENT,
+  ANNUAL_INVESTMENT,
+  EXPECTED_RETURN,
+  DURATION,
+} from "../util/constants";
 
-export default function ICUserInput({
-  initialInvestment,
-  annualInvestment,
-  expectedReturn,
-  duration,
-  handleInputChange,
-}) {
+export default function ICUserInput({ investmentInput, handleInputChange }) {
   return (
     <section id="user-input">
       <div className="input-group">
         <ICInputField
           label={"Initial Investment"}
-          value={initialInvestment}
+          value={investmentInput[INITIAL_INVESTMENT]}
           onValueChange={(value) =>
-            handleInputChange("initialInvestment", value)
+            handleInputChange(INITIAL_INVESTMENT, value)
           }
         />
 
         <ICInputField
           label={"Annual Investment"}
-          value={annualInvestment}
-          onValueChange={(value) =>
-            handleInputChange("annualInvestment", value)
-          }
+          value={investmentInput[ANNUAL_INVESTMENT]}
+          onValueChange={(value) => handleInputChange(ANNUAL_INVESTMENT, value)}
         />
       </div>
       <div className="input-group">
         <ICInputField
           label={"Expected Return (%, per year)"}
-          value={expectedReturn}
-          onValueChange={(value) => handleInputChange("expectedReturn", value)}
+          value={investmentInput[EXPECTED_RETURN]}
+          onValueChange={(value) => handleInputChange(EXPECTED_RETURN, value)}
         />
         <ICInputField
           label={"Duration (years)"}
-          value={duration}
-          onValueChange={(value) => handleInputChange("duration", value)}
+          value={investmentInput[DURATION]}
+          onValueChange={(value) => handleInputChange(DURATION, value)}
         />
       </div>
     </section>

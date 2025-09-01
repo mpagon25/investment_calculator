@@ -4,17 +4,28 @@ import ICUserInput from "./components/ICUserInput";
 import { useInvestmentInputs } from "./hooks/useInvestmentInputs";
 
 function App() {
-  const { investmentData, handleInputChange, investmentResults } =
-    useInvestmentInputs();
+  const {
+    investmentInput,
+    handleInputChange,
+    investmentResults,
+    inputIsValid,
+  } = useInvestmentInputs();
   return (
     <>
       <ICHeader />
-      <ICUserInput handleInputChange={handleInputChange} {...investmentData} />
-      <ICResultTable
-        investmentResults={investmentResults}
-        annualInvestment={investmentData.annualInvestment}
-        initialInvestment={investmentData.initialInvestment}
+      <ICUserInput
+        handleInputChange={handleInputChange}
+        investmentInput={investmentInput}
       />
+      {inputIsValid ? (
+        <ICResultTable
+          investmentResults={investmentResults}
+          annualInvestment={investmentInput.annualInvestment}
+          initialInvestment={investmentInput.initialInvestment}
+        />
+      ) : (
+        <p className="center">Please enter a duration greater than 0</p>
+      )}
     </>
   );
 }
