@@ -10,7 +10,11 @@ function App() {
     <>
       <ICHeader />
       <ICUserInput handleInputChange={handleInputChange} {...investmentData} />
-      <ICResultTable investmentResults={investmentResults} />
+      <ICResultTable
+        investmentResults={investmentResults}
+        annualInvestment={investmentData.annualInvestment}
+        initialInvestment={investmentData.initialInvestment}
+      />
     </>
   );
 }
