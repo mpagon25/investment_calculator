@@ -1,17 +1,18 @@
 import { useState } from "react";
+import { calculateInvestmentResults } from "../util/investment";
 
-export function useInvestmentInput() {
-  const [investmentInput, setInvestmentInput] = useState({
+export function useInvestmentInputs() {
+  const [investmentData, setInvestmentData] = useState({
     initialInvestment: 0,
     annualInvestment: 0,
     expectedReturn: 0,
     duration: 0,
   });
 
-  console.log(investmentInput);
-
   function handleInputChange(name, value) {
-    setInvestmentInput((prevInput) => ({ ...prevInput, [name]: value }));
+    setInvestmentData((prevInput) => ({ ...prevInput, [name]: value }));
   }
-  return { ...investmentInput, handleInputChange };
+
+  const investmentResults = calculateInvestmentResults(investmentData);
+  return { investmentData, handleInputChange, investmentResults };
 }

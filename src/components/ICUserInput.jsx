@@ -1,15 +1,12 @@
-import React, { useState } from "react";
 import ICInputField from "./ICInputField";
-import { useInvestmentInput } from "../hooks/useInvestmentInputs";
 
-export default function ICUserInput() {
-  const {
-    initialInvestment,
-    annualInvestment,
-    expectedReturn,
-    duration,
-    handleInputChange,
-  } = useInvestmentInput();
+export default function ICUserInput({
+  initialInvestment,
+  annualInvestment,
+  expectedReturn,
+  duration,
+  handleInputChange,
+}) {
   return (
     <section id="user-input">
       <div className="input-group">
